@@ -32,6 +32,8 @@
     justify-content:space-between;
     height:70px;
   }
+  .logo-img{height:28px; width:auto; display:block;} 
+  @media (max-width:600px){ .logo-img{height:24px;} }
   .hero{
     background:
       linear-gradient(rgba(0,0,0,0.55), rgba(0,0,0,0.65)),
@@ -181,7 +183,7 @@
   .play-btn{
     width:0;
     height:0;
-    border-left:28px solid #e60023;
+    border-left:28px solid rgba(255,255,255,0.9);
     border-top:18px solid transparent;
     border-bottom:18px solid transparent;
     transform:translateX(3px);
@@ -366,11 +368,23 @@ font-size:12px;padding:8px 14px;}
     .stat strong{font-size:22px;}
   }
   
-  .modal img{
-    max-width:90%;
-    max-height:90%;
-    border-radius:12px;
-  }
+  .modal{
+  position:fixed;
+  top:0;
+  left:0;
+  width:100%;
+  height:100%;
+  background:rgba(0,0,0,0.9);
+  display:none;
+  align-items:center;
+  justify-content:center;
+  z-index:99999;
+}
+.modal img{
+  max-width:95%;
+  max-height:95%;
+  border-radius:12px;
+}
   .modal .close-btn{
     position:absolute;
     top:20px;
@@ -405,10 +419,10 @@ font-size:12px;padding:8px 14px;}
   }
 
 /* font size slightly reduced for balance */
-.hero h1 { font-size:32px !important; }
-.hero h2 { font-size:30px !important; }
-.hero .highlight { font-size:36px !important; }
-.hero .sub-text { font-size:16px !important; }
+.hero h1 { font-size:36px !important; }
+.hero h2 { font-size:34px !important; }
+.hero .highlight { font-size:40px !important; }
+.hero .sub-text { font-size:18px !important; }
 .hero .badge-large { font-size:20px !important; }
 
 </style>
@@ -419,7 +433,7 @@ font-size:12px;padding:8px 14px;}
   <div class="topbar">
     <div class="wrap topbar-inner">
       <div class="logo">
-        <img src="images/logo.png" alt="신발가게 로고" style="height:36px;">
+        <img src="images/logo.png" alt="신발가게 로고" class="logo-img">
       </div>
       <a href="tel:1533-9282" class="topbar-btn">1533-9282 가맹문의</a>
     </div>
@@ -543,7 +557,31 @@ font-size:12px;padding:8px 14px;}
   </footer>
 
   
-    <img id="modalImg" src="" alt="" />
+    <div class="modal" id="modal">
+  <span class="close-btn" onclick="closeModal()">×</span>
+  <img id="modalImg" src="" alt="" />
+</div>
+
+<script>
+const zoomImgs = document.querySelectorAll('.zoomable');
+const modal = document.getElementById('modal');
+const modalImg = document.getElementById('modalImg');
+
+zoomImgs.forEach(img => {
+  img.addEventListener('click', () => {
+    modal.style.display = 'flex';
+    modalImg.src = img.src;
+  });
+});
+
+function closeModal(){
+  modal.style.display = 'none';
+}
+
+modal.addEventListener('click', (e)=>{
+  if(e.target === modal) closeModal();
+});
+</script>
   </div>
 
   
