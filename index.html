@@ -201,7 +201,7 @@
     object-fit:cover;
     background:#eee;
     transition:transform .35s ease;
-    cursor:zoom-in;
+    cursor:default;
   }
   /* hover 확대 효과 */
   .card:hover img{
@@ -561,34 +561,6 @@ font-size:12px;padding:8px 14px;}
   <footer class="footer">
     신발가게 가맹 랜딩페이지 · 대표번호 1533-9282
   </footer>
-
-  
-    <div class="modal" id="modal">
-  <span class="close-btn" onclick="closeModal()">×</span>
-  <img id="modalImg" src="" alt="" />
-</div>
-
-<script>
-const zoomImgs = document.querySelectorAll('.zoomable');
-const modal = document.getElementById('modal');
-const modalImg = document.getElementById('modalImg');
-
-zoomImgs.forEach(img => {
-  img.addEventListener('click', () => {
-    modal.style.display = 'flex';
-    modalImg.src = img.src;
-  });
-});
-
-function closeModal(){
-  modal.style.display = 'none';
-}
-
-modal.addEventListener('click', (e)=>{
-  if(e.target === modal) closeModal();
-});
-</script>
-  </div>
 
   
 
