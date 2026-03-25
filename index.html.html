@@ -1,0 +1,552 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>신발가게 오송점 가맹 모집</title>
+<style>
+  *{box-sizing:border-box;}
+  body{
+    padding-top:70px; /* 상단 고정바 높이와 동일하게 맞춰 흰색 간격 제거 */
+    margin:0;
+    font-family:'Noto Sans KR', Arial, sans-serif;
+    color:#111;
+    background:#fff;
+    line-height:1.6;
+  }
+  .wrap{max-width:1100px;margin:0 auto;padding:0 20px;}
+
+  /* 상단 고정바 */
+  .topbar{
+    position:fixed;
+    top:0;
+    left:0;
+    width:100%;
+    background:#0b0b0d;
+    z-index:9999;
+    box-shadow:none; /* 회색 줄 제거 */
+  }
+  .topbar-inner{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    height:70px;
+  }
+  .hero{
+    background:
+      linear-gradient(rgba(0,0,0,0.55), rgba(0,0,0,0.65)),
+      url('images/image1.jpg') center top / cover no-repeat;
+    color:#fff;
+    padding:60px 20px 85px !important; /* 하단 여백 85px */ /* 하단 여백 90px */ /* 하단 여백 축소 */ /* 상단 여백 줄여 텍스트 위로 이동 */ /* 하단 여백 증가 (150px) */
+    text-align:center;
+    min-height:auto;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+  }
+  .badge{
+    display:inline-flex;
+    align-items:center;
+    gap:4px !important;
+    padding:2px 8px !important;
+    border-radius:999px;
+    font-size:11px !important;
+    margin-bottom:6px;
+    background:transparent;
+    border:1px solid #ffffff;
+    color:#fff;
+  /* override */
+
+    display:inline-flex;
+    align-items:center;
+    gap:4px;
+    padding:2px 8px;
+    border-radius:999px;
+    font-size:11px;
+    margin-bottom:6px;
+    background:transparent;
+    border:1px solid #ffffff;
+    color:#fff;
+  }
+  .badge::before{
+    content:'🔥';
+    font-size:14px;
+  }
+  h1{
+    margin:4px 0;
+    font-size:clamp(34px,5vw,58px);
+    line-height:1.2;
+    font-weight:900;
+  }
+  .accent{color:#e60023;}
+  .big-text{font-size:1.2em;}
+  .brand-yellow{color:#ffd400;}
+  .mid-weight{font-weight:500; color:#ffffff;}
+  .check{color:#e60023; font-weight:900; margin-right:4px;}
+  .highlight-box{
+    display:inline-block;
+    margin-top:10px;
+    padding:10px 16px;
+    border:2px solid #e60023;
+    border-radius:8px;
+    background:rgba(230,0,35,0.15);
+    font-weight:900;
+    color:#ffffff;
+    animation:blinkBox 1s infinite;
+  }
+
+  @keyframes blinkBox{
+    0%{opacity:1; transform:scale(1);} 
+    50%{opacity:0.6; transform:scale(1.04);} 
+    100%{opacity:1; transform:scale(1);} 
+  }
+  .hero p{
+    max-width:760px;
+    margin:10px auto 0;
+    font-size:18px;
+    color:#e8e8e8;
+  }
+  .cta-group{
+    margin-top:28px;
+    display:flex;
+    gap:14px;
+    justify-content:center;
+    flex-wrap:wrap;
+  }
+  .btn{
+    display:inline-block;
+    padding:15px 28px;
+    border-radius:12px;
+    text-decoration:none;
+    font-weight:800;
+    transition:.2s ease;
+  }
+  .btn-primary{background:#e60023;color:#fff;} 
+  50%{transform:scale(1.05); box-shadow:0 8px 20px rgba(230,0,35,0.4);} 
+  100%{transform:scale(1); box-shadow:0 0 0 rgba(230,0,35,0.5);} 
+}
+  .btn-secondary{background:#fff;color:#111;}
+  .btn:hover{transform:translateY(-2px); filter:brightness(1.05);}
+  .section{padding:60px 0;} /* 전체 섹션 높이 축소 */
+  .section-dark{background:#f7f7f7; padding:20px 0 30px;} /* 상20 하30 */ /* 상하 20px */ /* 상단 회색 여백 축소 */
+  .section-title{
+    text-align:center;
+    margin-top:0;
+    margin-bottom:18px;
+    font-size:clamp(28px,4vw,40px);
+    font-weight:700;
+  }
+  .section-sub{
+    text-align:center;
+    max-width:760px;
+    margin:0 auto 36px;
+    color:#555;
+    font-size:17px;
+  }
+  .cards{
+    display:grid;
+    grid-template-columns:1fr;
+    gap:28px;
+  }
+  .card{
+    background:#fff;
+    border:1px solid #ececec;
+    border-radius:20px;
+    overflow:hidden;
+    box-shadow:0 10px 30px rgba(0,0,0,.06);
+    transition:transform .2s ease, box-shadow .2s ease;
+    position:relative;
+  }
+  .card:hover{transform:translateY(-6px); box-shadow:0 16px 40px rgba(0,0,0,.12);} 
+  .media-badge{
+    position:absolute;
+    top:12px; left:12px;
+    background:rgba(0,0,0,.75);
+    color:#fff;
+    font-size:12px;
+    padding:6px 10px;
+    border-radius:999px;
+    font-weight:700;
+    z-index:2;
+  }
+  .card a{display:block;}
+  .img-overlay{
+    position:absolute;
+    inset:0;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    background:rgba(0,0,0,0.25);
+  }
+  .play-btn{
+    width:0;
+    height:0;
+    border-left:28px solid #e60023;
+    border-top:18px solid transparent;
+    border-bottom:18px solid transparent;
+    transform:translateX(3px);
+    animation:playPulse 1.6s infinite;
+  }
+  @keyframes playPulse{
+    0%{transform:translateX(3px) scale(1);} 
+    50%{transform:translateX(3px) scale(1.15);} 
+    100%{transform:translateX(3px) scale(1);} 
+  }
+  .card img{
+    width:100%;
+    display:block;
+    aspect-ratio:16/10;
+    object-fit:cover;
+    background:#eee;
+  }
+
+  /* 로딩 스피너 */
+  .img-loading{
+    position:absolute;
+    inset:0;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    background:#f3f3f3;
+  }
+  .spinner{
+    width:26px;
+    height:26px;
+    border:3px solid #ddd;
+    border-top:3px solid #e60023;
+    border-radius:50%;
+    animation:spin 1s linear infinite;
+  }
+  @keyframes spin{
+    0%{transform:rotate(0deg);} 
+    100%{transform:rotate(360deg);} 
+  }
+  .card-body{padding:22px;}
+  .card-title{font-size:20px;font-weight:800;margin:0 0 10px;}
+  .card-text{font-size:15px;color:#555;margin:0;}
+  .stats{
+    display:grid;
+    grid-template-columns:2.2fr 2.8fr !important;
+    gap:22px;
+    margin-top:30px;
+    align-items:stretch;
+  }
+  .stat{
+    background:#111;
+    color:#fff;
+    border-radius:18px;
+    padding:0;
+    text-align:center;
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    align-items:center;
+    min-height:120px;
+    gap:6px;
+  }
+    grid-column: span 1;
+  }
+  .stat strong{
+    display:block;
+    font-size:44px;
+    line-height:1;
+    color:#e60023;
+    margin:0;
+    font-weight:700;
+}
+  .feature-grid{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:14px;
+    align-items:stretch;
+  }
+  .feature{
+    background:#fff;
+    border-radius:18px;
+    padding:26px 22px;
+    border:1px solid #ececec;
+    text-align:center;
+    height:100%;
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+  }
+  .feature h3{
+    margin:0 0 14px;
+    font-size:20px;
+    position:relative;
+    display:inline-block;
+}
+.feature h3::after{
+    content:'';
+    display:block;
+    width:22px;
+    height:3px;
+    background:#e60023;
+    margin:6px auto 0;
+    border-radius:2px;
+}
+  .feature p{margin:0;color:#555;}
+  .footer{
+    padding:28px 20px 40px;
+    text-align:center;
+    color:#666;
+    font-size:14px;
+  }
+  @media (max-width:900px){
+    .feature-grid{grid-template-columns:repeat(3,1fr); gap:10px;} 
+    .feature h3{font-size:14px;}
+    .feature p{font-size:11px;}
+    .feature{padding:14px 8px;}
+    .section{padding:56px 0;}
+  }
+  @media (max-width:600px){
+    .section-dark{padding:20px 0 30px;}
+    .hero{padding:110px 16px 85px !important; /* 모바일 여백 추가 확보 (배지 숨막힘 해결) */ min-height:auto;}
+    .badge{margin-bottom:8px;}
+    h1{font-size:clamp(24px,6vw,36px); line-height:1.2;}
+    .highlight-box{margin-top:6px; padding:6px 10px;}
+    .hero p{margin:6px auto 0; font-size:14px;}
+    .cta-group{margin-top:14px;}
+    .cta-group + div{margin-top:8px !important;}
+    .cards{grid-template-columns:1fr; gap:18px;}
+    .card-body{padding:12px;}
+    .card-title{font-size:14px;}
+    .card-text{font-size:12px;}
+    .badge{margin-bottom:8px;}
+    h1{font-size:clamp(24px,6vw,36px); line-height:1.2;}
+    .highlight-box{margin-top:6px; padding:6px 10px;}
+    .hero p{margin:6px auto 0; font-size:14px;}
+    .cta-group{margin-top:14px;}
+    .cta-group + div{margin-top:8px !important;}
+    .cards{grid-template-columns:1fr; gap:18px;}
+    .card-body{padding:12px;}
+    .card-title{font-size:14px;}
+    .card-text{font-size:12px;}
+    .card-body{padding:12px;}
+    .card-title{font-size:14px;}
+    .card-text{font-size:12px;}
+    .badge{
+    display:inline-flex;
+    align-items:center;
+    gap:4px !important;
+    padding:2px 8px !important;
+    border-radius:999px;
+    font-size:11px !important;
+    margin-bottom:6px;
+    background:transparent;
+    border:1px solid #ffffff;
+    color:#fff;
+  /* override */
+font-size:12px;padding:6px 12px;}
+    .stats{grid-template-columns:1.4fr 1.6fr; gap:10px;}
+    .stat{padding:16px 8px; font-size:12px;}
+    .stat strong{font-size:20px;}
+  }
+    .cards{gap:10px;}
+    .card-body{padding:12px;}
+    .card-title{font-size:14px;}
+    .card-text{font-size:12px;}
+    .badge{
+    display:inline-flex;
+    align-items:center;
+    gap:4px !important;
+    padding:2px 8px !important;
+    border-radius:999px;
+    font-size:11px !important;
+    margin-bottom:6px;
+    background:transparent;
+    border:1px solid #ffffff;
+    color:#fff;
+  /* override */
+font-size:12px;padding:8px 14px;}
+    h1{font-size:clamp(26px,6vw,40px);}    
+    .stats{grid-template-columns:1.4fr 1.6fr; gap:10px;}
+    .stat{padding:18px 8px; font-size:12px;}
+    .stat strong{font-size:22px;}
+  }
+  
+  .modal img{
+    max-width:90%;
+    max-height:90%;
+    border-radius:12px;
+  }
+  .modal .close-btn{
+    position:absolute;
+    top:20px;
+    right:30px;
+    font-size:32px;
+    color:#fff;
+    cursor:pointer;
+    font-weight:900;
+  }
+  .modal.active{display:flex;}
+  /* topbar button override */
+  .topbar a.topbar-btn,
+  .topbar a.topbar-btn:link,
+  .topbar a.topbar-btn:visited,
+  .topbar a.topbar-btn:active,
+  .topbar a.topbar-btn:focus,
+  .topbar a.topbar-btn:hover{
+    background:#e60023 !important;
+    color:#fff !important;
+    text-decoration:none !important;
+    padding:12px 15px !important;
+    border-radius:999px !important;
+    font-weight:800 !important;
+    font-size:14px !important;
+    display:inline-flex !important;
+    align-items:center !important;
+    justify-content:center !important;
+    line-height:1 !important;
+    white-space:nowrap !important;
+    box-shadow:0 4px 15px rgba(230,0,35,0.4) !important;
+    border:none !important;
+  }
+
+/* font size slightly reduced for balance */
+.hero h1 { font-size:32px !important; }
+.hero h2 { font-size:30px !important; }
+.hero .highlight { font-size:36px !important; }
+.hero .sub-text { font-size:16px !important; }
+.hero .badge-large { font-size:20px !important; }
+
+</style>
+</head>
+<body>
+
+  <!-- 고정 상단바 -->
+  <div class="topbar">
+    <div class="wrap topbar-inner">
+      <div class="logo">
+        <img src="images/logo.png" alt="신발가게 로고" style="height:36px;">
+      </div>
+      <a href="tel:1533-9282" class="topbar-btn">1533-9282 가맹문의</a>
+    </div>
+  </div>
+
+  <section class="hero">
+    <div class="wrap">
+      <div class="badge"><span style="font-size:1em; font-weight:400; letter-spacing:0;">SINCE 2011 직화 불닭발·불족발 전문 브랜드</div>
+      <h1><span class="mid-weight">검증된</span> 닭발 브랜드<br><span class="brand-yellow" style="font-weight:900;">신발가게</span> <span class="brand-yellow" style="font-weight:900;">오송점</span><br><span class="accent big-text">가맹 모집</span><br><span class="accent highlight-box">오송 단! 한자리</span></h1>
+      <p>언론이 먼저 인정한 청주 브랜드<br>본점·충북대점·천안두정점 운영 경험<br>오송 맞춤 홀·배달 복합매장</p>
+      
+      
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="wrap">
+      <h2 class="section-title">언론과 방송이<br>먼저 주목한 브랜드</h2>
+      <div class="cards">
+        <article class="card">
+          <div class="media-badge">언론</div>
+          <div style="position:relative">
+            <div class="img-loading"><div class="spinner"></div></div>
+            <img src="images/news1.jpg" class="zoomable" alt="" onload="this.previousElementSibling.style.display='none'" />
+            <div class="img-overlay">🔍</div>
+          </div>
+          <div class="card-body">
+            <h3 class="card-title">충청일보 보도</h3>
+            <p class="card-text">청주 용암동 직화불닭발 맛집<br>직화 불맛과 차별화된 메뉴로 지역 대표 맛집 주목</p>
+          </div>
+        </article>
+
+        <article class="card">
+          <div class="media-badge">언론</div>
+          <div style="position:relative">
+            <div class="img-loading"><div class="spinner"></div></div>
+            <img src="images/news2.jpg" class="zoomable" alt="" onload="this.previousElementSibling.style.display='none'" />
+            <div class="img-overlay">🔍</div>
+          </div>
+          <div class="card-body">
+            <h3 class="card-title">아이뉴스24 보도</h3>
+            <p class="card-text">차별화된 신발박스 패키지로 브랜드 주목<br>예비 창업자 문의 및 관심 지속 증가</p>
+          </div>
+        </article>
+
+        <article class="card">
+          <div class="media-badge">방송</div>
+          <a href="https://youtu.be/ur3lQM22UB4?si=-hvt3RcBdGrnt-LJ" target="_blank" rel="noopener noreferrer">
+            <div style="position:relative">
+              <div class="img-loading"><div class="spinner"></div></div>
+              <img src="images/tv.jpg" alt="" onload="this.previousElementSibling.style.display='none'" />
+              <div class="img-overlay"><span class="play-btn"></span></div>
+            </div>
+          </a>
+          <div class="card-body">
+            <h3 class="card-title"><a href="https://youtu.be/ur3lQM22UB4?si=-hvt3RcBdGrnt-LJ" target="_blank" rel="noopener noreferrer" style="color:inherit;text-decoration:none;">CJB 청주방송 모닝와이드 소개</a></h3>
+            <p class="card-text">직화 불맛과 중독적인 매운맛으로 화제<br>메뉴 경쟁력으로 방송에서도 주목</p>
+          </div>
+        </article>
+      </div>
+
+      <div class="stats">
+        <div class="stat">
+          <strong style="font-weight:300; letter-spacing:-0.5px; font-size:40px;">2011</strong>
+          전설의 불닭으로 시작
+        </div>
+        <div class="stat" style="width:100%; background:#e60023; min-height:120px;">
+          <strong style="color:#ffd400; letter-spacing:-1px; font-size:44px;">2024</strong>
+          신발가게 프랜차이즈 런칭
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section section-dark">
+    <div class="wrap">
+      <h2 class="section-title">왜 <span style="color:#e60023; font-weight:900;">신발가게</span>인가?</h2>
+      <p class="section-sub"><span class="check">✔</span> 직화의 깊은 맛<br><span class="check">✔</span> 중독적인 메뉴 구성<br><span class="check">✔</span> 홀·배달 가능한 운영</p>
+
+      <div class="feature-grid">
+        <div class="feature">
+          <h3>직화<br>시그니처</h3>
+          <p>대표 메뉴 명확<br>초보도 OK</p>
+        </div>
+        <div class="feature">
+          <h3>운영이<br>쉬운 구성</h3>
+          <p>간편한 메뉴<br>홀·배달 가능</p>
+        </div>
+        <div class="feature">
+          <h3>오송 맞춤<br>경쟁력</h3>
+          <p>식사·야식 대응<br>생활권 집중</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="wrap">
+      <h2 class="section-title"><span style="color:#e60023; font-weight:900;">오송점</span>이 유리한 이유</h2>
+      <p class="section-sub"><span class="check">✔</span> 주거+직장인 수요가 동시에 존재<br><span class="check">✔</span> 식사·안주·야식 모두 대응 가능한 메뉴<br><span class="check">✔</span> 홀·포장·배달까지 가능한 구조</p>
+
+      <div class="feature-grid">
+        <div class="feature">
+          <h3>저녁·야식<br>수요 대응</h3>
+          <p>퇴근 수요 공략<br>야식 수요 흡수</p>
+        </div>
+        <div class="feature">
+          <h3>배달 반경<br>활용</h3>
+          <p>배달·포장 강점<br>생활권 집중</p>
+        </div>
+        <div class="feature">
+          <h3>오픈 마케팅<br>연계</h3>
+          <p>SNS·리뷰 연계<br>초반 매출 안정</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer class="footer">
+    신발가게 가맹 랜딩페이지 · 대표번호 1533-9282
+  </footer>
+
+  
+    <img id="modalImg" src="" alt="" />
+  </div>
+
+  
+
+</body>
+</html>
