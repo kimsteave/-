@@ -87,18 +87,22 @@
   .check{color:#e60023; font-weight:900; margin-right:4px;}
   .highlight-box{
     display:inline-block;
-    margin:16px 0; /* 위아래 여백 추가 */
-    padding:10px 16px;
-    border:2px solid #e60023;
-    border-radius:8px;
-    background:rgba(230,0,35,0.15);
+    margin-top:10px;
+    padding:16px 20px;
+    border:3px solid #e60023; /* 테두리 더 강조 */
+    border-radius:10px;
+    background:rgba(230,0,35,0.18);
     font-weight:900;
     color:#ffffff;
-    animation:blinkBox 1s infinite;
+    animation:blinkBox 1.6s infinite; /* 깜빡임 속도 완화 */
+    box-shadow:0 8px 20px rgba(230,0,35,0.25); /* 입체감 추가 */
   }
 
   @keyframes blinkBox{
     0%{opacity:1; transform:scale(1);} 
+    50%{opacity:0.75; transform:scale(1.06);} 
+    100%{opacity:1; transform:scale(1);} 
+  } 
     50%{opacity:0.6; transform:scale(1.04);} 
     100%{opacity:1; transform:scale(1);} 
   }
