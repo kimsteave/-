@@ -200,6 +200,12 @@
     aspect-ratio:16/10;
     object-fit:cover;
     background:#eee;
+    transition:transform .35s ease;
+    cursor:zoom-in;
+  }
+  /* hover 확대 효과 */
+  .card:hover img{
+    transform:scale(1.08);
   }
 
   /* 로딩 스피너 */
@@ -458,7 +464,7 @@ font-size:12px;padding:8px 14px;}
           <div style="position:relative">
             <div class="img-loading"><div class="spinner"></div></div>
             <img src="images/news1.jpg" class="zoomable" alt="" onload="this.previousElementSibling.style.display='none'" />
-            <div class="img-overlay">🔍</div>
+            
           </div>
           <div class="card-body">
             <h3 class="card-title">충청일보 보도</h3>
@@ -471,7 +477,7 @@ font-size:12px;padding:8px 14px;}
           <div style="position:relative">
             <div class="img-loading"><div class="spinner"></div></div>
             <img src="images/news2.jpg" class="zoomable" alt="" onload="this.previousElementSibling.style.display='none'" />
-            <div class="img-overlay">🔍</div>
+            
           </div>
           <div class="card-body">
             <h3 class="card-title">아이뉴스24 보도</h3>
